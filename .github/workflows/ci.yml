@@ -1,0 +1,37 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+
+name: Java CI with Maven
+
+on:
+  push:
+    branches: [ "main" ]
+    #pull_request:
+    # branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Start Selenoid server
+        uses: n-ton4/selenoid-github-action@master
+        id: start-selenoid
+        continue-on-error: false
+        with:
+          version: 1.10.1
+          args: -limit 10
+          browsers: chrome
+          last-versions: 1
+
+
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: Run the tests
+        run: mvn clean install
+      - name: Deploy Pages
+        uses: JamesIves/github-pages-deploy-action@4.1.5
+        with:
+          branch: main
+          folder: ./ExtentResults/
