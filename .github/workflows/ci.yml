@@ -18,7 +18,7 @@ jobs:
       - name: Start Selenoid server
         uses: n-ton4/selenoid-github-action@master
         id: start-selenoid
-        continue-on-error: false
+        continue-on-error: true
         with:
           version: 1.10.1
           args: -limit 10
