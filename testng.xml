@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+    <!--<parameter name="OS" value="Windows"/>
+    <parameter name="browser" value="Chrome"/>
+    <parameter name="runType" value="local"></parameter>-->
+
+    <test name="ClipBoardHealthTestCases">
+        <classes>
+            <class name="org.health.testcases.GettingProductsInformationTest"/>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->
